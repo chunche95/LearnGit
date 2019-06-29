@@ -1,0 +1,9 @@
+@Title: Deshacer cambios.
+@Description: Deshacer modificaciones.
+@Author: Chunche
+@Version: 1.0
+
+- Ver cambios : git diff
+- Descartar cambio (sólo 1 cambio): git checkout -- index.html
+- Descartar cambios aunque ya se envien al state area: git reset HEAD index.html (Lo elimina del state in area, seguidamente uso el comando anterior)
+
