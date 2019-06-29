@@ -3,7 +3,35 @@
 @Author: Chunche
 @Version: 1.0
 
+>>>>>>>>>> CAMBIOS EN EL AREA DE ESTADO <<<<<<<<<<<<
 - Ver cambios : git diff
 - Descartar cambio (sólo 1 cambio): git checkout -- index.html
 - Descartar cambios aunque ya se envien al state area: git reset HEAD index.html (Lo elimina del state in area, seguidamente uso el comando anterior)
+
+>>>>>>>>>> REVOCAR UN COMMIT <<<<<<<<<<<<<
+- Ver nombre de los logs con su referencia: git log --oneline
+- Deshacer un commit: 
+    $ git reset ab19c91 ***
+    $ git checkout -- index.html
+
+*** [NO RECOMENDABLE PARA REPOSITORIOS COMPARTIDOS, SOLO LOCALES. Ya que no serían tan importantes]
+
+- Hacer un reset de golpe, lo hace del remoto y del local.
+    $ git reset --hard ab19c91
+
+- Hacer un commit parcial, volviendo a un paso anterior.
+    $ git reset --soft ab19c91
+
+~~~~~~~~~~~~~~~ Deshacer el cambio de forma menos destructiva. ~~~~~~~~~~~~~~~ 
+- Deshacer el commit, haciendo un cambio del ultimo commit: 
+    $ git diff                  [Ver diferencias]
+    $ git log --oneline
+    $ git diff ab19c91 b43af32  [Muestra las diferencias entre ambios commits]
+    $ git --oneline --decorate  [Ver los nombres de los punteros de los repositorios]
+    $ git diff HEAD~1           [Ver ultimo commit con el anterior]
+    $ git revert HEAD           [Deshacer los cambios del ultimo commit, vuelve a dejarlo como estaba antes del commit.]
+
+- Eliminar varios commit en un solo ENTER, dejando todo en el state
+    $ git revert --no-commit HEAD
+    $ git revert --continue
 
