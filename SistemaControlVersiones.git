@@ -1,0 +1,82 @@
+@ Title: Comandos GIT
+@ Description: Aprendiendo comandos básicos de uso del sistema de control de versiones.
+@ Author: Chunche
+@ Version: 1.0
+
+ _____Toda la informacion en: ____________________________________________
+|                                                                         |
+|           https://git-scm.com/book/es/v1/Empezando-Instalando-Git       |
+|                                                                         |
+|_________________________________________________________________________|
+
+- Para la instalación de Windows/Mac es básica, es seguir el instalador del programa git en: https://git-scm.com/
+- Para la instalación en Linux/Mac por terminal, lanzamos:
+    $ apt-get install install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+  Una vez instaladas las dependencias, puede descargarse la version en la web: http://git-scm.com/download
+  Una vez descargada, se descomprime y realiza la creacion de git.
+    $ tar -zxf git-1.6.0.5.tar.gz
+    $ cd git-1.6.0.5
+    $ make prefix=/usr/local all
+    $ sudo make prefix=/usr/local install
+
+ Realizamos instalación para terminal Linux
+    $ apt-get install git 
+ Realizamos instalación para terminal Mac
+    > http://sourceforge.net/projects/git-osx-installer/ 
+
+------------------------------------------------------------------------------------------------------
+
+    Otra forma de realizarlo es clonandolo:
+    $ git clone git://git.kernel.org/pub/scm/git/git.git
+
+____________________________________________________________________________________________________________
+
+instalación de github desktop: https://desktop.github.com/
+____________________________________________________________________________________________________________
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++Suponiendo que el proyecto ya está creado++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+- Accedemos a la carpeta del proyecto con --> cd ruta/de/carpeta
+
+
+
+- Inicializacion de git: git init
+- Si el repositorio ya existe en GitHub usaremos el comando: git clone url:repositorio.git
+
+- Para crear el README.md (Introducción en GitHub), para hacerlo por terminal tenemos que escribir:
+    $ echo "# Titulo y descripcion del repositorio" >> README.md
+
+- Ver estado del repositorio: git status
+- Si tenemos en el git status un 'untraked' son cambios realizados en la carpeta pero que no se han guardado en el git.
+- Para añadir los cambios del repositorio usamos: git add fichero.ext (Ej: git add README.md)
+- Si son muchos cambios/ficheros que almacenar tenemos la opción de usar: git add . 
+- Guardar los cambios. git commit
+(Si abre un fichero es para guardar el comentario de los cambios)
+- Otra forma de hacer el commit con el comentario directamente usamos: git commit -m "Comentario al repositorio"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-> Realizando copias de seguridad del proyecto:
+
+
+
+
