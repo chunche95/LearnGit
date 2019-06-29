@@ -60,7 +60,9 @@ ________________________________________________________________________________
 
 
 
-
+- Ver commits historicos: git log
+- Ver las diferencias entre cambios realizados con: git diff (Color verde/rojo)
+- Para combinar cambios/revertir cambios: git commit --amend (Abre un archivo para guardar cambios, comentarios).
 
 
 
