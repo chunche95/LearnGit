@@ -4,4 +4,6 @@
 @Version: 1.0
 
 
-
+Para fusionar las ramas nuevas con la rama raiz usamos --> git merge NombreRama
+Estrategia de fusion entre cambios --> 
+ - Hacer un 3er commit 
