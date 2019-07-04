@@ -27,4 +27,5 @@ Realizar bifurcación a la linea de trabajo (Rama):
 Haciendo modificaciones con la nueva rama 'RamaChunche'
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- Hacer un commit bajo workflow feature branch --> 
+- Ver los cambios en forma de grafo de todos los commits: git log --oneline --decorate --all --graph
+- Hacer un commit bajo workflow feature branch --> git 
