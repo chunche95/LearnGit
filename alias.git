@@ -1,0 +1,20 @@
+@Title:Creación de alias en git
+@Description: Añadir alias a la configuración de git. Formas abreviadas de comandos más largos.
+@Author: Chunche
+@Version: 1.0
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+                        PARA VER/HACER QUE LA CONFIGURACION DE GIT SEA GLOBAL HACEMOS:
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Configuracion local y global de git --> git config
+
+/********************** git lod NO FUNCIONARA CON LA CONFIGURACION POR DEFECTO, TENEMOS QUE EDITARLA **********************/
+git log + online + decotare --> git lod 
+
+Añadir comando a la configuración global de git --> git config --global alias.lodag 'log --oneline --decorate --all --graph'
+Añadir 'git reset HEAD <file>' a la configuracion global de git --> git config --global alias.unstage 'reset HEAD --'
+Realizar un reset al ultimo commit realizado --> git unstage <file>
+
+Listar todos los alias que se han creado --> git config --global --get-regexp alias
+
