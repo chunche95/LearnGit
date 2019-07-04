@@ -35,3 +35,11 @@ Fusionar trabajos de la rama de origen y la rama de Description
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - Fusionar cambios entre ramas --> git merge fix-fecha
+
+
+- Resolver un conflicto en el merge por cambios en la misma linea. --> git merge RAMA 
+        + Nos abre un archivo con los cambios para seleccionar la mejor opcion
+        + Guardamos 
+        + git commit -m "Comentario"
+        + git add archivo.ext
+        + git push origin RAMA 
