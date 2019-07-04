@@ -18,3 +18,4 @@ Realizar un reset al ultimo commit realizado --> git unstage <file>
 
 Listar todos los alias que se han creado --> git config --global --get-regexp alias
 
+Eliminar un alias --> git config --global --unset alias.lodag
