@@ -4,4 +4,27 @@
 @Version: 1.0
 
 
+Ramificar el trabajo consiste en dividir el directorio de trabajo como 'linea de trabajo raiz o principal' y 
+y dar acceso al resto de usuarios que comparten el trabajo, su actividad se guarda como una ramificacion del proyecto,
+sin afectar el trabajo del resto y manteniendo el trabajo raiz como modulo indice, la ramificación se guarda en la raíz
+cuando en la rama de trabajo se realiza el commit, fusionándose así con el trabajo principal.
 
+Comandos:
+- Para ver logsde los commits realizados. --> git log --oneline
+- Ver un grafo con los distintos commits. --> git log --oneline --graph
+- Ver  el commit actual del directorio de trabajo --> git log --oneline --graph --decorate
+
+Realizar bifurcación a la linea de trabajo (Rama):
+- Ver listas de ramas creadas/actual en el DT --> git branch 
+- Crear una rama paralela al trabajo raiz. --> git branch RamaChunche
+- Cambiar de una rama a otra --> git checkout RamaChunche
+- Crear una rama y cambiarme a ella -->  git checkout -b feature-newhomepage
+- Modificar una rama --> git branch -m feature-newhomepage nuevaRama
+- Eliminar una rama --> git branch -d nuevaRama
+- Ayuda --> git branch -h
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+Haciendo modificaciones con la nueva rama 'RamaChunche'
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- Hacer un commit bajo workflow feature branch --> 
