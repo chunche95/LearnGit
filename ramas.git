@@ -43,3 +43,7 @@ Fusionar trabajos de la rama de origen y la rama de Description
         + git commit -m "Comentario"
         + git add archivo.ext
         + git push origin RAMA 
+
+Forma más sencilla de ver los historiales de los commits --> git log 
+
+Cambiar a la rama master --> git co master
