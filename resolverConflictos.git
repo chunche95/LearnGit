@@ -7,4 +7,10 @@
 - Para resolver los conflictos en un fichero por haber sido editado en distintas ramas 
     + Cuando editamos el archivo para ver el conflicto vemos las dos versiones separadas por un "======"
     + Normalmente no suelen haber fallos en las partes de código, suelen ser el zonas de comentarios o importaciones
-    que suelen ser 
+    que suelen ser las zonas de conflicto.
+    + Cuando lanzamos el comando de git para ver el estado, o hacemos un push, nos mostrará el conflicto. 
+    + Tendremos que editar el fichero del conflicto, seleccionaremos la solución más ventajosa para perder el menor trabajo
+    posible.
+    + Guardamos y salimos, ahora podremos hacer el push al repositorio.
+
+    >> Para cancelar o abortar la fusión entre las ramas y quedar con la primera versión -->  git merge --abort
