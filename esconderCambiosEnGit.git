@@ -1,0 +1,29 @@
+@Title: Creacion de etiquetas eb git
+@Description: Creación de etiquetas en git para identificar las referencias de los commits.
+@Author: Chunche
+@Version: 1.0
+
+Ejemplo:
+
++ Creamos el archivo con el que actualmente estamos trabajando --> vim esconderCambiosGit.git
++ Añadimos a la zona intermedia para hacer el git al repositorio remoto -->  git add esconderCambiosGit.git
+
+!!!!!!!!!!!!!!!!        ALERTA      ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡
+
+- Necesitamos cambiar a otro archivo que urge corregir, ya o ya o ya.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+- Como debemos empezar el trabajo y queremos guardar el archivo con el que estabamos trabajando, lanzo --> git stash
+    + Con esto consigo:
+        + Guardar en una carpeta, 'STASH' que para mi es invisible por ahora, todo mi trabajo hecho.
+        + Tener limpia mi carpeta de trabajo para iniciar con el otro.
+    + Ver los stash guardados --> git stash list
+- Vuelvo a mi zona de trabajo anterior --> git stash apply
+- Para borrar mi lista de carpetas 'invisibles' de stash --> git stash drop
+- Guardar mi stash con comentario -->  git stash save "Comentario"
+- Obtener informacion de un stash concreto, en este caso el cero --> git stash show stash@\{0\}
+- Eliminar las modificaciones en un archivo concreto --> git checkout -- index.html
+
+- Aplicar el apply y drop de stash --> git stash pop
+- Ver ayuda del stash --> git stash -h | git stash --help
