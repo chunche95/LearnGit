@@ -21,7 +21,30 @@
 *****************************************************
             COMO HACER UN PULL 
 *****************************************************
+- git merge origin/master es lo mismo que un pull.
 - Buscar cambios/actualizaciones de un repositorio remoto --> git pull origin master 
+- Reorganiza los commit, hace un historial de los commit y lo organiza segun historial del proyecto --> git pull --rebase origin master 
+- Realizar un rebase de forma local --> git rebase master
+
+                    +++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    +   REBASE REESCRIBE EL HISTORIAL DEL REPOSITORIO   +
+                    +++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Con un 'merge' lo que hace es guardar de forma histografica los commits tal y como se guardaron en historial de la carpeta de trabajo.
+
+
+                    +++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    +                   REBASE INTERACTIVO              +
+                    +++++++++++++++++++++++++++++++++++++++++++++++++++++
+-  Podemos cambiar orden de los commtis, aplastarlos en uno solo, cambiar los comentarios.
+            
+                    !!!!  NUCA HACERLO CON UN TRABAJO PUSHEADO. ¡¡¡¡
+
+- Modificar los 4 últimos commits --> git rebase -i HEAD~4
+- Descartar los commits realizados --> EN VEZ DE DEJAR LA PALABRA 'pick' DE LOS COMMITS, ESCRIBO 'squash' PARA MODIFICARLOS Y DEJAR SOLO UNO. 
+- SOBREESCRIBIR LOS COMENTARIOS --> 'reword'
+- MODIFICAR UN COMMIT --> 'edit'
+- Eliminar el log del commit --> 'fixup'
 
 *****************************************************
             COMO HACER UN REMOTE 
@@ -32,3 +55,8 @@
 
 
 - Ver todas las ramas de mis repositorios --> git branch --all
+
+***************************************************************************
+            COMO DESCARGAR CAMBIOS/MODIFICACIONES DE REPOSITORIOS REMOTOS 
+***************************************************************************
+- Bajar los cambios y los fusiona --> git fetch origin 
