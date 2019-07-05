@@ -1,0 +1,20 @@
+@Title: Creacion de etiquetas eb git
+@Description: Creación de etiquetas en git para identificar las referencias de los commits.
+@Author: Chunche
+@Version: 1.0
+
+
+- Crear una etiqueta version 0.1.0 --> git tag v0.1.0
+- Añadir un tag a un commit realizado --> git tag v0.1.1 6d623c8
+                                                         -------
+                                                            |
+                                                            V
+                                                    número del commit
+- Ver los tags creados --> git tag     
+- Borrar tag --> git tag --delete v0.1.0  | git tag -d v0.1.0
+- Vet informacion/ayuda de tags --> git tag -h
+
+******************************************************************
+                        TAGS ANOTADOS
+******************************************************************
+
