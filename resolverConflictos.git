@@ -1,0 +1,10 @@
+@Title: Fusionar dos ramas de trabajo.
+@Description: Combinar ramas de trabajo entre una rama y la raiz del trabajo.
+@Author: Chunche
+@Version: 1.0
+
+
+- Para resolver los conflictos en un fichero por haber sido editado en distintas ramas 
+    + Cuando editamos el archivo para ver el conflicto vemos las dos versiones separadas por un "======"
+    + Normalmente no suelen haber fallos en las partes de código, suelen ser el zonas de comentarios o importaciones
+    que suelen ser 
