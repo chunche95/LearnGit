@@ -1,0 +1,34 @@
+@Title: Introduccion de remotos
+@Description: Comunicación con repositorios remotos en git.
+@Author: Chunche
+@Version: 1.0
+
+
+- Agregar remotos --> git remote 'repositorio'
+- Recibir informacion del repo remoto --> git pull
+- Enviar informacion al repo remote --> git push
+
+*****************************************************
+            COMO HACER UN PUSH 
+*****************************************************
+ - Subir datos al repositorio remoto --> git push nombredelremoto rama ==> git push origin master
+
+*****************************************************
+    COMO HACER UNA CLONACIÓN DEL REPOSITORIO  
+*****************************************************
+- Clonar un repositorio remoto --> git clone https://github.com/chunche95/LearnGit 
+
+*****************************************************
+            COMO HACER UN PULL 
+*****************************************************
+- Buscar cambios/actualizaciones de un repositorio remoto --> git pull origin master 
+
+*****************************************************
+            COMO HACER UN REMOTE 
+*****************************************************
+- Añadir un repositorio remoto por https --> git remote add REPOSITORIO_REMOTO_ORIGIN https://github.com/chunche95/LearnGit 
+- Ver repositorios remotos añadidos --> git remote 
+- Ver más información de los repositorios --> git remote -v 
+
+
+- Ver todas las ramas de mis repositorios --> git branch --all
