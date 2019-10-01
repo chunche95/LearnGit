@@ -1,0 +1,189 @@
+Índice
+
+    git ec
+    git co, br, cm, st
+    Actualizar el directorio de trabajo
+    git save, git wip, git undo, git amend
+    Resetear el directorio de trabajo adecuadamente, git wipe
+    Alias para logs
+    Mostrar commits de forma compacta y colores, git ls
+    Listar commits y ficheros modificados, git ll
+    Mostar commits de forma compacta y con fechas, git lds
+    Buscar ficheros y contenido dentro de ficheros (grep)
+    Listar todos los aliases, git la
+    Listar la última etiqueta, git lt
+    Alias para hacer merges, git ours, git theirs
+    Recopilación
+    Referencias
+
+Todo aquel que use git sabrá que en ocasiones es un poco tedioso escribir los comandos a ejecutar. Para ello existen los alias, que nos permiten crearnos atajos a la hora de ejecutar un comando.
+En este artículo se recopilarán unos cuantos alias útiles para el día a día. Os animo a que comentéis vuestros preferidos para ir aumentando la lista!. Comencemos.
+
+git ec
+
+Como no, el primer alias tenía que ser uno que nos permita editar la configuración de git rápidamente:
+
+git config --global alias.ec "config --global -e"
+
+A partir de ahora, podremos abrir la configuración de git con nuestro editor por defecto con git ec.
+
+El resto del artículo asumirá que se tiene la configuración abierta con un editor, los aliases se escribirán directamente en la sección [alias] de dicho fichero.
+git co, br, cm, st
+
+Estos aliases pretenden más que facilitar la escritura de checkout, branch, commit -am y status. Básicamente los comandos que más uso.
+
+co = checkout
+br = branch
+cm = commit -am
+st = status
+
+Veamos ahora una serie de aliases que he extraido de haacked:
+Actualizar el directorio de trabajo
+
+Para simplificar estos dos comandos
+
+git pull --rebase --prune
+git submodule update --init --recursive
+
+en los que el primero obtiene los cambios desde el servidor, si se tienen commits locales, se ponen al principio de los descargados (rebase), y con prune se eliminan ramas que ya no existan en el servidor.
+El segundo simplemente actualiza recursivamente submódulos. El alias quedará:
+
+up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+
+Este alias es algo distinto, la exclamación indica que se va a ejecutar un comando en la shell, es decir, podemos ejecutar cualquier comando, no solo de git. En este caso, se están ejecutando dos comandos git.
+git save, git wip, git undo, git amend
+
+Estos dos alias están destinados a cuando simplemente queremos guardar nuestros cambios, ya sea porque tenemos que irnos a hacer otras cosas, o simplemente no hemos acabado el trabajo y aún no tenemos un nombre
+para el commit adecuado. Con ellos, se guardan los cambios con un mensaje de commit SAVEPOINT o WIP, en función del alias que os guste más:
+
+save = !git add -A && git commit -m 'SAVEPOINT'
+wip = commit -am "WIP"
+
+Una vez volvamos a trabajar, simplemente ejecutamos el alias undo, que elimina el último commit, pero deja intactos los cambios:
+
+undo = reset HEAD~1 --mixed
+
+O si simplemente queremos modificar el mensaje del commit, usamos el alias amend:
+
+amend = commit -a --amend
+
+Resetear el directorio de trabajo adecuadamente, git wipe
+
+Cuantas veces hemos comenzado a trabajar o intentar añadir algo al código y al final lo único que hicimos fue ensuciar todo el directorio, montones de líneas de código sin ordenar etc. Lo mejor en estos casos es
+descartar todo y volver a empezar. Para ello es posible usar git reset HEAD --hard, pero esto borrará todo, sin que quede constancia de lo que hicimos. Para descartar el código, pero que quede constancia de lo que hicimios,
+por si alguna vez nos hace falta, crearemos el alias wipe:
+
+wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+
+Hace un commit de todo lo que hay en el directorio de trabajo para luego hacer un hard reset y eliminar dicho commit. A pesar de ello, el commit seguirá ahí, en la historia del repositorio, aunque inalcanzable.
+Estos commits son un poco complejos de recuperar, pero al menos seguimos teniendo aquel trabajo del que no quedamos del todo convencidos. Quizá algún día recuerdes que necesitabas una línea de código que escribiste.
+Para recuperarlo hay que ejecutar git reflog y buscar el SHA del commit que tenga como mensaje “WIPE SAVEPOINT”.
+Alias para logs
+
+Veamos ahora una serie de alias para mostrar los logs de los commits de distintos modos.
+Mostrar commits de forma compacta y colores, git ls
+
+
+El alias es el siguiente:
+
+ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+
+Listar commits y ficheros modificados, git ll
+
+
+El alias es el siguiente:
+
+ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+
+Mostar commits de forma compacta y con fechas, git lds
+
+
+lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+
+Si lo preferimos con fechas relativas, usaremos el alias git ld:
+
+
+ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+
+Buscar ficheros y contenido dentro de ficheros (grep)
+
+Para buscar ficheros con conteniendo el nombre indicado:
+
+f = "!git ls-files | grep -i"
+
+Ejemplo:
+
+$ git f one
+
+P3/oneway/Utils.py
+P3/oneway/__init__.py
+P3/oneway/ej1.py
+P3/oneway/ej2.py
+P3/oneway/ej3.py
+P3/oneway/ej4.py
+P3/oneway/ej5.py
+P3/oneway/ej6.py
+P3/oneway/ej7.py
+
+Para buscar contenido dentro de todo el repositorio:
+
+grep = grep -Ii
+gr = grep -Ii
+
+Ejemplo:
+
+$ git grep Rabin
+
+P1/modularArith/ej4.py:def MillerRabin(p):
+P1/modularArith/ej4.py: print MillerRabin(90221078753392184154149622269679731705920869572364323146777389106744249167893287091491005751893264013854756094230384816436985035887367570198390830836626929620930395458607390051335962764852769424941031051670131521265969408350800112779692655340042253991970492761524977413231930703094065023050574077317620529581736775256036443993928340221545607375549860405933153255776836414051570996984167934585339322850189347872718439350738428272565094611168867981011370318335242028953808721309056435214502065537377043)
+
+Para buscar desde el directorio raíz:
+
+gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
+
+Listar todos los aliases, git la
+
+Ahora que ya llevamos unos cuantos aliases, quizá sean dificil de recordar hasta que nos acostumbremos, por ello, podemos crear un alias que liste todos los nuestros aliases :-):
+
+la = "!git config -l | grep alias | cut -c 7-"
+
+Listar la última etiqueta, git lt
+
+lasttag = describe --tags --abbrev=0
+lt = describe --tags --abbrev=0
+
+Alias para hacer merges, git ours, git theirs
+
+ours = "!f() { git co --ours $@ && git add $@; }; f"
+theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+
+Eso es todo, comentad vuestras alias para completar este artículo!
+Recopilación
+
+Aquí se muestran todos los alias vistos:
+
+[alias]
+  ec = config --global -e
+  co = checkout
+  br = branch
+  cm = commit -am
+  st = status
+  up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+  save = !git add -A && git commit -m 'SAVEPOINT'
+  wip = commit -am "WIP"
+  undo = reset HEAD~1 --mixed
+  amend = commit -a --amend
+  wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  f = "!git ls-files | grep -i"
+  grep = grep -Ii
+  gr = grep -Ii
+  gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{}   echo $TOPLEVEL/{} && cd $A; }; f"
+  la = "!git config -l | grep alias | cut -c 7-"
+  lasttag = describe --tags --abbrev=0
+  lt = describe --tags --abbrev=0
+  ours = "!f() { git co --ours $@ && git add $@; }; f"
+  theirs = "!f() { git co --theirs $@ && git add $@; }; f"
